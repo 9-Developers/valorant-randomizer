@@ -1,6 +1,7 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
-export default function WeaponPage() {
+export default function WeaponPage(): ReactNode {
   return (
     <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
       <h1 className="text-5xl font-extrabold tracking-tight text-black sm:text-[5rem]">

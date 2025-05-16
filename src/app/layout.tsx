@@ -1,6 +1,7 @@
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
+import type { ReactNode } from "react";
 import Header from "~/app/_components/header";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{ children: React.ReactNode }>): ReactNode {
   return (
     <html lang="en">
       <body className="min-h-screen bg-slate-50">

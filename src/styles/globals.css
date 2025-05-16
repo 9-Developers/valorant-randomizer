@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
+/* https://dev.to/ziqinyeow/how-to-add-custom-font-file-to-your-react-app-31kb */
+@font-face {
+  font-family: "FF Mark";
+  src: local("FF Mark"),
+  url("/src/fonts/FF Mark-Medium.otf") format("opentype");
+}
+
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
+  --font-sans: "FF Mark", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

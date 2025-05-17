@@ -27,9 +27,13 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 ## Todo
 
 - [x] Get webp images of agent icons
-- [ ] Random agents page
-  - [ ] Agents selectors
-  - [ ] Get random from selected
+- [x] Random agents page
+  - [x] Agents selectors
+  - [x] Get random from selected
 - [ ] Random weapon page
     - [ ] Weapons selectors
     - [ ] Get random from selected
+- [ ] Styling
+  - [ ] Agent page
+  - [ ] Weapon page
+- [ ] Home page (what do with this?)

@@ -3,10 +3,17 @@ import Image from "next/image";
 
 export default function AgentIcon({
   agent,
-}: Readonly<{ agent: string }>): ReactNode {
+  isSelected,
+  onClick,
+}: Readonly<{
+  agent: string;
+  isSelected: boolean;
+  onClick: () => void;
+}>): ReactNode {
+  const className = isSelected ? "" : "bg-slate-300";
+
   return (
-    // TODO: Is inline-block needed here?
-    <div className="inline-block">
+    <div className={className} onClick={onClick}>
       <Image
         src={"/images/agents/icons/" + agent + ".webp"}
         alt={agent}
@@ -14,9 +21,7 @@ export default function AgentIcon({
         width={80}
         height={80}
       />
-      <span>
-        {agent}
-      </span>
+      <span>{agent}</span>
     </div>
   );
 }

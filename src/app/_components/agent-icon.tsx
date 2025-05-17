@@ -8,7 +8,7 @@ export default function AgentIcon({
     // TODO: Is inline-block needed here?
     <div className="inline-block">
       <Image
-        src={"/images/agents/icons/" + agent + ".png"}
+        src={"/images/agents/icons/" + agent + ".webp"}
         alt={agent}
         style={{ objectFit: "contain" }}
         width={80}

@@ -26,7 +26,7 @@ Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/ver
 
 ## Todo
 
-- [ ] Get webp images of agent icons
+- [x] Get webp images of agent icons
 - [ ] Random agents page
   - [ ] Agents selectors
   - [ ] Get random from selected

@@ -3,8 +3,7 @@
 /* https://dev.to/ziqinyeow/how-to-add-custom-font-file-to-your-react-app-31kb */
 @font-face {
   font-family: "FF Mark";
-  src: local("FF Mark"),
-  url("/src/fonts/FF Mark-Medium.otf") format("opentype");
+  src: local("FF Mark"), url("../fonts/FF Mark.otf") format("opentype");
 }
 
 @theme {

@@ -1,3 +1,27 @@
+[![Discord Shield](https://discordapp.com/api/guilds/452233740408717313/widget.png?style=shield)](https://discord.gg/KTgshSbEUU)
+[![BSD 3-Clause License](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://opensource.org/license/bsd-3-clause)
+[![Codecov](https://img.shields.io/codecov/c/github/Ixirsii/valorant-randomizer?logo=codecov&style=flat-square)](https://codecov.io/gh/Ixirsii/valorant-randomizer)
+
+# Valorant randomizer
+
+Valorant randomizer is a website that allows you to get a random agent or
+weapon, and even includes a fun drinking game!
+
+## Todo
+
+- [x] Get webp images of agent icons
+- [x] Random agents page
+  - [x] Agents selectors
+  - [x] Get random from selected
+- [ ] Random weapon page
+  - [ ] Weapons selectors
+  - [ ] Get random from selected
+- [ ] Drinking game
+- [ ] Styling
+  - [ ] Agent page
+  - [ ] Weapon page
+- [ ] Home page (what do with this?)
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
@@ -23,17 +47,3 @@ You can check out the [create-t3-app GitHub repository](https://github.com/t3-os
 ## How do I deploy this?
 
 Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
-
-## Todo
-
-- [x] Get webp images of agent icons
-- [x] Random agents page
-  - [x] Agents selectors
-  - [x] Get random from selected
-- [ ] Random weapon page
-    - [ ] Weapons selectors
-    - [ ] Get random from selected
-- [ ] Styling
-  - [ ] Agent page
-  - [ ] Weapon page
-- [ ] Home page (what do with this?)

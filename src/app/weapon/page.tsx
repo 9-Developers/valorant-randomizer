@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { weapons } from "~/data/weapons";
+import { getImagePath } from "~/lib/functions";
 
 const categories = [
   { key: "sidearms", label: "Sidearms" },
@@ -9,9 +10,6 @@ const categories = [
   { key: "snipers", label: "Sniper Rifles" },
   { key: "lmgs", label: "Machine Guns" },
 ];
-
-const getImagePath = (image?: string) =>
-  image ? `/images/weapons/${image}` : "/images/weapons/Classic.webp";
 
 export default function WeaponPage() {
   return (

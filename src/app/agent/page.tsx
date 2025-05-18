@@ -4,6 +4,7 @@ import { type ReactNode, useEffect, useState } from "react";
 import Image from "next/image";
 import AgentCategory from "~/app/_components/agent-category";
 import { controllers, duelists, initiators, sentinels } from "~/data/agents";
+import { invertSelection, toggleAgent } from "~/lib/functions";
 
 // TODO: Handle case where all agents are unselected.
 export default function AgentPage(): ReactNode {
@@ -83,44 +84,4 @@ export default function AgentPage(): ReactNode {
       </div>
     </>
   );
-}
-
-/* ************************************************************************** *
- *                             Private functions                              *
- * ************************************************************************** */
-
-/**
- * Invert the selection of subset.
- *
- * If all items in the subset are contained within agents, then the subset is removed.
- * Otherwise, the missing items in the subset will be added to agents.
- *
- * @param subset Subset of agents to add or remove.
- * @param agents All selected agents.
- * @return New selection.
- */
-function invertSelection(subset: string[], agents: string[]): string[] {
-  const containsAll: boolean = subset.every((agent) => agents.includes(agent));
-  const filtered: string[] = agents.filter((agent) => !subset.includes(agent));
-
-  if (containsAll) {
-    return filtered;
-  } else {
-    return [...filtered, ...subset];
-  }
-}
-
-/**
- * Toggle agent selection.
- *
- * If agent is contained in agents then remove it, otherwise add it.
- *
- * @param agent Agent to toggle.
- * @param agents All selected agents.
- * @return New selection.
- */
-function toggleAgent(agent: string, agents: string[]): string[] {
-  return agents.includes(agent)
-    ? agents.filter((a) => a !== agent)
-    : [...agents, agent];
 }

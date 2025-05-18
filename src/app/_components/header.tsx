@@ -11,8 +11,8 @@ export default function Header(): ReactNode {
         </h1>
       </Link>
       <nav className="mx-[12.5%] flex h-8 w-3/4 justify-between font-semibold">
-        <NavLink href="/agent" name="Agent" />
-        <NavLink href="/weapon" name="Weapon" />
+        <NavLink href="/agent" text="Agent" />
+        <NavLink href="/weapon" text="Weapon" />
       </nav>
     </header>
   );

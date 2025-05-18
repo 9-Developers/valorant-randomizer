@@ -1,7 +1,11 @@
-import { render, screen } from "@testing-library/react";
-import { expect, test } from "vitest";
+import { cleanup, render, screen } from "@testing-library/react";
+import { afterEach, expect, test } from "vitest";
 import AgentCategory from "~/app/_components/agent-category";
 import { controllers, duelists, initiators, sentinels } from "~/data/agents";
+
+afterEach(() => {
+  cleanup();
+});
 
 test("renders category", () => {
   // Given
@@ -31,16 +35,12 @@ test("renders category", () => {
   // Then
   expect(
     screen.getByText(category),
-    "Category should not be null",
-  ).not.toBeNull();
+    "Category should be in the document",
+  ).toBeInTheDocument();
   controllers.forEach((agent) => {
     expect(
-      screen.getByText(agent),
-      agent + " should not be null",
-    ).not.toBeNull();
-    expect(
-      screen.getByAltText(agent + " icon"),
-      agent + " icon should not be null",
-    ).not.toBeNull();
+      screen.getByLabelText(agent),
+      "Agent should be in the document",
+    ).toBeInTheDocument();
   });
 });

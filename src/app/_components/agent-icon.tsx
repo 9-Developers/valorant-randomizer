@@ -13,7 +13,7 @@ export default function AgentIcon({
   const className = isSelected ? "" : "bg-slate-300";
 
   return (
-    <div className={className} onClick={onClick}>
+    <div className={className} aria-label={agent} onClick={onClick}>
       <Image
         src={"/images/agents/icons/" + agent + ".webp"}
         alt={agent + " icon"}

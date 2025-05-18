@@ -3,14 +3,14 @@ import type { ReactNode } from "react";
 
 export default function NavLink({
   href,
-  name,
+  text,
 }: {
   href: string;
-  name: string;
+  text: string;
 }): ReactNode {
   return (
     <Link className="w-1/2 text-center leading-8 hover:bg-white/25" href={href}>
-      {name}
+      {text}
     </Link>
   );
 }

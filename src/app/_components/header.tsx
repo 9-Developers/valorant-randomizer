@@ -4,13 +4,13 @@ import NavLink from "./nav-link";
 
 export default function Header(): ReactNode {
   return (
-    <header className="bg-black h-32 justify-center">
+    <header className="h-32 justify-center bg-black">
       <Link href="/">
-        <h1 className="h-24 leading-snug mb-0 text-center text-white">
+        <h1 className="mb-0 h-24 text-center leading-snug">
           Valorant Randomizer
         </h1>
       </Link>
-      <nav className="flex font-semibold h-8 justify-between mx-[12.5%] w-3/4">
+      <nav className="mx-[12.5%] flex h-8 w-3/4 justify-between font-semibold">
         <NavLink href="/agent" name="Agent" />
         <NavLink href="/weapon" name="Weapon" />
       </nav>

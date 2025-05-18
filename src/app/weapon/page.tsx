@@ -1,6 +1,5 @@
-import { weapons } from "~/data/weapons";
-import type { Weapon } from "~/data/weapons";
 import Image from "next/image";
+import { weapons } from "~/data/weapons";
 
 const categories = [
   { key: "sidearms", label: "Sidearms" },
@@ -16,33 +15,35 @@ const getImagePath = (image?: string) =>
 
 export default function WeaponPage() {
   return (
-    <div className="min-h-screen bg-black bg-opacity-80 flex flex-col items-center py-8">
-      <h1 className="mb-8 text-4xl font-bold text-white tracking-wide">Valorant Weapons</h1>
-      <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 px-2">
+    <div className="bg-opacity-80 flex min-h-screen flex-col items-center bg-black py-8">
+      <h1 className="mb-8 text-4xl font-bold tracking-wide text-white">
+        Valorant Weapons
+      </h1>
+      <div className="grid w-full max-w-7xl grid-cols-1 gap-4 px-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
         {categories.map((cat) => (
           <div key={cat.key} className="flex flex-col">
-            <h2 className="text-center text-lg font-semibold text-gray-200 mb-4 uppercase tracking-wider">
+            <h2 className="mb-4 text-center text-lg font-semibold tracking-wider text-gray-200 uppercase">
               {cat.label}
             </h2>
             <div className="flex flex-col gap-3">
-              {(weapons as Record<string, Weapon[]>)[cat.key]?.map((weapon) => (
+              {weapons[cat.key]?.map((weapon) => (
                 <div
                   key={weapon.name}
-                  className="flex flex-col items-center bg-gray-900 bg-opacity-80 rounded-lg p-3 border border-gray-700 shadow-md"
+                  className="bg-opacity-80 flex flex-col items-center rounded-lg border border-gray-700 bg-gray-900 p-3 shadow-md"
                 >
-                  <div className="w-24 h-16 flex items-center justify-center mb-2">
+                  <div className="mb-2 flex h-16 w-24 items-center justify-center">
                     <Image
                       src={getImagePath(weapon.image)}
                       alt={weapon.name}
                       width={96}
                       height={64}
-                      className="object-contain max-h-16"
+                      className="max-h-16 object-contain"
                     />
                   </div>
-                  <span className="text-white text-base font-bold tracking-tight text-center">
+                  <span className="text-center text-base font-bold tracking-tight text-white">
                     {weapon.name}
                   </span>
-                  <span className="text-green-400 text-sm font-mono mt-1">
+                  <span className="mt-1 font-mono text-sm text-green-400">
                     &#x20B9;{weapon.price}
                   </span>
                 </div>
@@ -51,9 +52,16 @@ export default function WeaponPage() {
           </div>
         ))}
       </div>
-      <div className="mt-10 text-gray-400 text-sm text-center">
-        <p>To add or update weapon images, place them in <code className="bg-gray-800 px-2 py-1 rounded">public/images/weapons/</code>.<br />
-        If an image is missing, <code>Classic.webp</code> will be used as a fallback.</p>
+      <div className="mt-10 text-center text-sm text-gray-400">
+        <p>
+          To add or update weapon images, place them in{" "}
+          <code className="rounded bg-gray-800 px-2 py-1">
+            public/images/weapons/
+          </code>
+          .<br />
+          If an image is missing, <code>Classic.webp</code> will be used as a
+          fallback.
+        </p>
       </div>
     </div>
   );

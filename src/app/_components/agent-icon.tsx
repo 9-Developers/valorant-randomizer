@@ -16,7 +16,7 @@ export default function AgentIcon({
     <div className={className} onClick={onClick}>
       <Image
         src={"/images/agents/icons/" + agent + ".webp"}
-        alt={agent}
+        alt={agent + " icon"}
         style={{ objectFit: "contain" }}
         width={80}
         height={80}

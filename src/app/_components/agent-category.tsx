@@ -16,9 +16,7 @@ export default function AgentCategory({
 }): ReactNode {
   return (
     <>
-      <button onClick={onCategoryClick}>
-        <h2>{category}</h2>
-      </button>
+      <h2 onClick={onCategoryClick}>{category}</h2>
       <div className="container flex flex-wrap gap-4">
         {subset.map((agent) => (
           <AgentIcon

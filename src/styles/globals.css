@@ -60,3 +60,8 @@ h6 {
 header {
   @apply text-white;
 }
+
+hr {
+  @apply border-red-900;
+  @apply my-4;
+}

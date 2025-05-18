@@ -4,7 +4,7 @@ export type Weapon = {
   image?: string; // filename, e.g., "vandal.webp"
 };
 
-export const weapons = {
+export const weapons: Readonly<Record<string, Weapon[]>> = {
   sidearms: [
     { name: "Classic", price: 0, image: "Classic.webp" },
     { name: "Shorty", price: 300, image: "Shorty.webp" },

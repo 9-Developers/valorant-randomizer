@@ -1,10 +1,11 @@
 "use client";
 
-import { type ReactNode, useState } from "react";
-import { controllers, duelists, initiators, sentinels } from "~/data/agents";
+import { type ReactNode, useEffect, useState } from "react";
 import Image from "next/image";
 import AgentCategory from "~/app/_components/agent-category";
+import { controllers, duelists, initiators, sentinels } from "~/data/agents";
 
+// TODO: Handle case where all agents are unselected.
 export default function AgentPage(): ReactNode {
   const [agents, setAgents] = useState([
     ...controllers,
@@ -12,7 +13,12 @@ export default function AgentPage(): ReactNode {
     ...initiators,
     ...sentinels,
   ]);
-  const agent: string = agents[Math.floor(Math.random() * agents.length)] ?? "";
+  const [agent, setAgent] = useState(agents[0]);
+
+  // Dumb hack to prevent hydration errors
+  useEffect(() => {
+    setAgent(agents[Math.floor(Math.random() * agents.length)] ?? "");
+  }, [agents]);
 
   return (
     <>
@@ -25,7 +31,7 @@ export default function AgentPage(): ReactNode {
 
       <hr />
 
-      <div className="container flex flex-row">
+      <div className="container flex flex-row gap-4">
         <div className="random-agent">
           <h2 className="text-center">Random agent</h2>
           <h3 className="text-center">{agent}</h3>
@@ -34,6 +40,7 @@ export default function AgentPage(): ReactNode {
             alt={agent + " portrait"}
             style={{ objectFit: "contain" }}
             height={256}
+            width={256}
           />
         </div>
 

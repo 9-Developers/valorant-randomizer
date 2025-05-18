@@ -160,9 +160,6 @@ main() {
     print_status "Building Docker image..."
     docker build -t valorant-randomizer:$new_version .
     
-    # Clean up old images
-    cleanup_old_images
-    
     # Run container and verify it works
     print_status "Testing container..."
     
@@ -172,42 +169,44 @@ main() {
         docker rm -f valorant_randomizer
     fi
     
+    # Start the container
     container_id=$(docker run -d --name valorant_randomizer -p 3000:3000 valorant-randomizer:$new_version)
     
     # Wait for container to start
+    print_status "Waiting for container to start..."
     sleep 5
     
     # Check if container is running
-    if docker ps | grep -q valorant_randomizer; then
-        print_status "Container is running successfully!"
-        
-        # Test if the application is responding
-        if curl -s http://localhost:3000 > /dev/null; then
-            print_status "Application is responding correctly!"
-        else
-            print_error "Application is not responding correctly!"
-            docker logs valorant_randomizer
-            docker stop valorant_randomizer
-            docker rm valorant_randomizer
-            exit 1
-        fi
-        
-        # Stop and remove the test container
-        docker stop valorant_randomizer
-        docker rm valorant_randomizer
-    else
+    if ! docker ps | grep -q valorant_randomizer; then
         print_error "Container failed to start!"
         docker logs valorant_randomizer
         docker rm valorant_randomizer
         exit 1
     fi
     
+    # Test if the application is responding
+    print_status "Testing application response..."
+    if ! curl -s http://localhost:3000 > /dev/null; then
+        print_error "Application is not responding correctly!"
+        docker logs valorant_randomizer
+        docker stop valorant_randomizer
+        docker rm valorant_randomizer
+        exit 1
+    fi
+    
+    print_status "Container is running and responding successfully!"
+    
+    # Stop and remove the test container
+    print_status "Cleaning up test container..."
+    docker stop valorant_randomizer
+    docker rm valorant_randomizer
+    
+    # Clean up old images only after successful build and test
+    cleanup_old_images
+    
     print_status "Build process completed successfully!"
     print_status "New version: $new_version"
     print_status "Image tag: valorant-randomizer:$new_version"
-    
-    # Final cleanup of images
-    cleanup_old_images
 }
 
 # Run the main function

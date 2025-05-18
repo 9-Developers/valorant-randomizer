@@ -13,6 +13,9 @@ COPY package.json pnpm-lock.yaml ./
 # Install dependencies
 RUN pnpm install
 
+# Add clsx for conditional class names
+RUN pnpm add clsx
+
 # Copy the rest of the application
 COPY . .
 

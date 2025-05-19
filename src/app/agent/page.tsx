@@ -6,7 +6,8 @@ import AgentCategory from "~/app/_components/agent-category";
 import { controllers, duelists, initiators, sentinels } from "~/data/agents";
 import { invertSelection, toggleAgent } from "~/lib/functions";
 
-// TODO: Handle case where all agents are unselected.
+const noAgentsSelected = "No Agents Selected";
+
 export default function AgentPage(): ReactNode {
   const [agents, setAgents] = useState([
     ...controllers,
@@ -14,11 +15,13 @@ export default function AgentPage(): ReactNode {
     ...initiators,
     ...sentinels,
   ]);
-  const [agent, setAgent] = useState(agents[0]);
+  const [agent, setAgent] = useState(noAgentsSelected);
 
   // Dumb hack to prevent hydration errors
   useEffect(() => {
-    setAgent(agents[Math.floor(Math.random() * agents.length)] ?? "");
+    setAgent(
+      agents[Math.floor(Math.random() * agents.length)] ?? noAgentsSelected,
+    );
   }, [agents]);
 
   return (

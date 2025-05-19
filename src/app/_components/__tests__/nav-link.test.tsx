@@ -12,12 +12,7 @@ test("renders nav link", () => {
   const text = "Home";
 
   // When
-  render(
-    <NavLink
-      href={href}
-      text={text}
-    />,
-  );
+  render(<NavLink href={href} text={text} />);
 
   // Then
   expect(

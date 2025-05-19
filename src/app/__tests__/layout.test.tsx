@@ -12,7 +12,7 @@ test("renders layout", () => {
     <Layout>
       <p>Test paragraph</p>
     </Layout>,
-    { container: document }
+    { container: document },
   );
 
   // Then

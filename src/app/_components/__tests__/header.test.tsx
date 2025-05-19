@@ -14,4 +14,4 @@ test("renders header", () => {
   expect(screen.getByText("Valorant Randomizer")).toBeInTheDocument();
   expect(screen.getByText("Agent")).toBeInTheDocument();
   expect(screen.getByText("Weapon")).toBeInTheDocument();
-})
+});

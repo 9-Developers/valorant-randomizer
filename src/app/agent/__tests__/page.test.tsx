@@ -57,7 +57,11 @@ test("unselects category", () => {
     expect(
       screen.getByLabelText(agent),
       "Agent should have background",
-    ).toHaveClass("bg-slate-300");
+    ).not.toHaveClass("agent-selected");
+    expect(
+      screen.getByLabelText(agent),
+      "Agent should have background",
+    ).toHaveClass("agent-unselected");
   });
 });
 
@@ -79,8 +83,12 @@ test("re-selects category", () => {
   controllers.forEach((agent) => {
     expect(
       screen.getByLabelText(agent),
+      "Agent should have background",
+    ).toHaveClass("agent-selected");
+    expect(
+      screen.getByLabelText(agent),
       "Agent should not have background",
-    ).not.toHaveClass("bg-slate-300");
+    ).not.toHaveClass("agent-unselected");
   });
 });
 
@@ -97,7 +105,11 @@ test("unselects agent", () => {
   expect(
     screen.getByLabelText(agent),
     "Agent should have background",
-  ).toHaveClass("bg-slate-300");
+  ).not.toHaveClass("agent-selected");
+  expect(
+    screen.getByLabelText(agent),
+    "Agent should not have background",
+  ).toHaveClass("agent-unselected");
 });
 
 test("re-selects agent", () => {
@@ -113,6 +125,10 @@ test("re-selects agent", () => {
   // Then
   expect(
     screen.getByLabelText(agent),
+    "Agent should have background",
+  ).toHaveClass("agent-selected");
+  expect(
+    screen.getByLabelText(agent),
     "Agent should not have background",
-  ).not.toHaveClass("bg-slate-300");
+  ).not.toHaveClass("agent-unselected");
 });

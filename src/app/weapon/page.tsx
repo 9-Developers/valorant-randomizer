@@ -11,7 +11,7 @@ import {
 
 export default function WeaponPage(): ReactNode {
   return (
-    <div className="container bg-black">
+    <div className="content">
       <h1>Valorant Weapons</h1>
 
       <div className="weapons">

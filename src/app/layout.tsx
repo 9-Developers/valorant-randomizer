@@ -1,8 +1,9 @@
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import type { ReactNode } from "react";
+import { type ReactNode } from "react";
 import Header from "~/app/_components/header";
+import ThemeProvider from "~/providers/theme-provider";
 
 export const metadata: Metadata = {
   title: "Valorant randomizer",
@@ -16,9 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-
-        <main>{children}</main>
+        <ThemeProvider>
+          <Header />
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

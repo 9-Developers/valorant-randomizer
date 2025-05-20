@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 /* https://dev.to/ziqinyeow/how-to-add-custom-font-file-to-your-react-app-31kb */
 /* https://stackoverflow.com/questions/28279989/multiple-font-weights-one-font-face-query */
 @font-face {
@@ -136,12 +138,19 @@
 
 body {
   @apply bg-slate-50;
+  @apply dark:bg-slate-900;
   @apply min-h-screen;
+  @apply dark:text-white;
 }
 
 header {
   @apply bg-black;
   @apply justify-center;
+  @apply text-white;
+}
+
+header h1 {
+  @apply mb-0;
   @apply text-white;
 }
 
@@ -162,7 +171,7 @@ main {
 }
 
 code {
-  @apply bg-gray-800;
+  @apply bg-slate-800;
   @apply px-2;
   @apply py-1;
   @apply rounded;
@@ -175,6 +184,8 @@ h4,
 h5,
 h6 {
   @apply font-extrabold;
+  @apply text-red-900;
+  @apply dark:text-red-800;
 }
 
 h2,
@@ -186,37 +197,30 @@ h6 {
 }
 
 h1 {
-  @apply mb-0;
   @apply text-center;
   @apply text-6xl;
-  @apply text-white;
   @apply tracking-wide;
 }
 
 h2 {
   @apply text-4xl;
-  @apply text-red-900;
 }
 
 h3 {
   @apply text-2xl;
-  @apply text-red-900;
 }
 
 h4 {
   @apply text-xl;
-  @apply text-red-900;
 }
 
 h5 {
   @apply text-lg;
-  @apply text-red-900;
   @apply underline;
 }
 
 h6 {
   @apply text-lg;
-  @apply text-red-900;
 }
 
 hr {
@@ -233,7 +237,8 @@ hr {
 }
 
 .agent-unselected {
-  @apply bg-slate-300;
+  @apply bg-black/25;
+  @apply dark:bg-white/25;
 }
 
 .agent-selected {
@@ -244,27 +249,28 @@ hr {
   @apply flex;
   @apply flex-row;
   @apply gap-4;
+  @apply justify-between;
 }
 
 .agents-select {
 }
 
-.container {
+.content {
   @apply py-8;
 }
 
 .info {
-  @apply mt-10;
   @apply text-center;
   @apply text-sm;
-  @apply text-gray-400;
+  @apply text-gray-700;
+  @apply dark:text-gray-300;
 }
 
 .nav-link {
   @apply hover:bg-white/25;
   @apply leading-8;
   @apply text-center;
-  @apply w-1/2;
+  @apply w-1/3;
 }
 
 .random-agent {

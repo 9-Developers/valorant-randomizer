@@ -14,6 +14,9 @@ export default function Header(): ReactNode {
         <Link className="nav-link" href="/weapon">
           Weapon
         </Link>
+        <Link className="nav-link" href="/settings">
+          Settings
+        </Link>
       </nav>
     </header>
   );

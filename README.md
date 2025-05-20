@@ -10,17 +10,21 @@ weapon, and even includes a fun drinking game!
 ## Todo
 
 - [x] Get webp images of agent icons
-- [x] Random agents page
+- [ ] Random agents page
   - [x] Agents selectors
   - [x] Get random from selected
+  - [ ] New random agent button
 - [ ] Random weapon page
   - [ ] Weapons selectors
   - [ ] Get random from selected
 - [ ] Drinking game
-- [ ] Styling
+- [ ] Styling 
+  - [ ] Themes (dark mode/light mode)
+    - [x] Settings page/theme toggle
   - [ ] Agent page
   - [ ] Weapon page
 - [ ] Home page (what do with this?)
+- [ ] Responsive design?
 
 # Create T3 App
 

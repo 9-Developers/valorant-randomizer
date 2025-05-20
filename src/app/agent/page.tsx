@@ -25,7 +25,7 @@ export default function AgentPage(): ReactNode {
   }, [agents]);
 
   return (
-    <div className="container">
+    <div className="content">
       <p className="info">
         Get a random agent from the list below. All agents are selected by
         default. Click on a heading (Controllers, Duelists, Initiators, or

@@ -26,13 +26,9 @@ export default function WeaponCategory({
             />
           </div>
 
-          <span className="weapon-name">
-            {weapon.name}
-          </span>
+          <span className="weapon-name">{weapon.name}</span>
 
-          <span className="weapon-price">
-            &#x20B9;{weapon.price}
-          </span>
+          <span className="weapon-price">&#x20B9;{weapon.price}</span>
         </div>
       ))}
     </>

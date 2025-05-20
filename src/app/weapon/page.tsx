@@ -1,6 +1,13 @@
 import type { ReactNode } from "react";
 import WeaponCategory from "~/app/weapon/_components/category";
-import { lmgs, rifles, shotguns, sidearms, smgs, snipers } from "~/data/weapons";
+import {
+  lmgs,
+  rifles,
+  shotguns,
+  sidearms,
+  smgs,
+  snipers,
+} from "~/data/weapons";
 
 export default function WeaponPage(): ReactNode {
   return (

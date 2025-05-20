@@ -20,6 +20,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
+      source-code-pro:
+        specifier: ^2.38.0
+        version: 2.38.0
       zod:
         specifier: ^3.24.4
         version: 3.24.4
@@ -2506,6 +2509,9 @@ packages:
 
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
+
+  source-code-pro@2.38.0:
+    resolution: {integrity: sha512-JMXu7l3XrLREG17eEwY66ANG9716WTu6OeNvZfRKQKANEvbSERDZjk5AYTHeV6owQNPQTeiiW3ri2Ou93XFGvg==}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -5376,6 +5382,8 @@ snapshots:
     dependencies:
       is-arrayish: 0.3.2
     optional: true
+
+  source-code-pro@2.38.0: {}
 
   source-map-js@1.2.1: {}
 

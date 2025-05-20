@@ -2,7 +2,7 @@
 
 import { type ReactNode, useEffect, useState } from "react";
 import Image from "next/image";
-import AgentCategory from "~/app/_components/agent-category";
+import AgentCategory from "~/app/agent/_components/category";
 import { controllers, duelists, initiators, sentinels } from "~/data/agents";
 import { invertSelection, toggleAgent } from "~/lib/functions";
 
@@ -25,8 +25,8 @@ export default function AgentPage(): ReactNode {
   }, [agents]);
 
   return (
-    <>
-      <p>
+    <div className="container">
+      <p className="info">
         Get a random agent from the list below. All agents are selected by
         default. Click on a heading (Controllers, Duelists, Initiators, or
         Sentinels) to toggle all agents in that category. Click on an individual
@@ -35,7 +35,7 @@ export default function AgentPage(): ReactNode {
 
       <hr />
 
-      <div className="container flex flex-row gap-4">
+      <div className="agents">
         <div className="random-agent">
           <h2 className="text-center">Random agent</h2>
           <h3 className="text-center">{agent}</h3>
@@ -85,6 +85,6 @@ export default function AgentPage(): ReactNode {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -12,14 +12,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>): ReactNode {
+}: Readonly<{ children: ReactNode }>): ReactNode {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-slate-50">
+      <body>
         <Header />
-        <main className="flex flex-col items-center justify-center">
-          <div className="w-3/4">{children}</div>
-        </main>
+
+        <main>{children}</main>
       </body>
     </html>
   );

@@ -1,18 +1,171 @@
 @import "tailwindcss";
 
 /* https://dev.to/ziqinyeow/how-to-add-custom-font-file-to-your-react-app-31kb */
+/* https://stackoverflow.com/questions/28279989/multiple-font-weights-one-font-face-query */
 @font-face {
   font-family: "FF Mark";
+  font-style: normal;
+  font-weight: 100;
+  src: local("FF Mark Hairline"), url("../fonts/FF Mark Hairline.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: italic;
+  font-weight: 100;
+  src: local("FF Mark Hairline Italic"), url("../fonts/FF Mark Hairline Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: normal;
+  font-weight: 200;
+  src: local("FF Mark Extra Light"), url("../fonts/FF Mark Extra Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: italic;
+  font-weight: 200;
+  src: local("FF Mark Extra Light Italic"), url("../fonts/FF Mark Extra Light Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: normal;
+  font-weight: 300;
+  src: local("FF Mark Light"), url("../fonts/FF Mark Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: italic;
+  font-weight: 300;
+  src: local("FF Mark Light Italic"), url("../fonts/FF Mark Light Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: normal;
+  font-weight: 400;
   src: local("FF Mark"), url("../fonts/FF Mark.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "FF Mark";
+  font-style: italic;
+  font-weight: 400;
+  src: local("FF Mark Italic"), url("../fonts/FF Mark Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: normal;
+  font-weight: 500;
+  src: local("FF Mark Medium"), url("../fonts/FF Mark Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: italic;
+  font-weight: 500;
+  src: local("FF Mark Medium Italic"), url("../fonts/FF Mark Medium Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: normal;
+  font-weight: 600;
+  src: local("FF Mark Book"), url("../fonts/FF Mark Book.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: italic;
+  font-weight: 600;
+  src: local("FF Mark Book Italic"), url("../fonts/FF Mark Book Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: normal;
+  font-weight: 700;
+  src: local("FF Mark Bold"), url("../fonts/FF Mark Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: italic;
+  font-weight: 700;
+  src: local("FF Mark Bold Italic"), url("../fonts/FF Mark Bold Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: normal;
+  font-weight: 800;
+  src: local("FF Mark Heavy"), url("../fonts/FF Mark Heavy.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: italic;
+  font-weight: 800;
+  src: local("FF Mark Heavy Italic"), url("../fonts/FF Mark Heavy Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: normal;
+  font-weight: 900;
+  src: local("FF Mark Black"), url("../fonts/FF Mark Black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "FF Mark";
+  font-style: italic;
+  font-weight: 900;
+  src: local("FF Mark Black Italic"), url("../fonts/FF Mark Black Italic.otf") format("opentype");
+}
+
 @theme {
+  --font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --font-sans: "FF Mark", Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+body {
+  @apply bg-slate-50;
+  @apply min-h-screen;
+}
+
+header {
+  @apply bg-black;
+  @apply justify-center;
+  @apply text-white;
+}
+
+nav {
+  @apply container;
+  @apply flex;
+  @apply flex-row;
+  @apply font-semibold;
+  @apply h-8;
+  @apply justify-between;
+  @apply mx-[10%];
+  @apply w-4/5;
+}
+
 main {
-  @apply pt-4;
+  @apply mx-[10%];
+  @apply w-4/5;
+}
+
+code {
+  @apply bg-gray-800;
+  @apply px-2;
+  @apply py-1;
+  @apply rounded;
 }
 
 h1,
@@ -22,13 +175,22 @@ h4,
 h5,
 h6 {
   @apply font-extrabold;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply mb-2;
 }
 
 h1 {
+  @apply mb-0;
   @apply text-center;
   @apply text-6xl;
   @apply text-white;
+  @apply tracking-wide;
 }
 
 h2 {
@@ -57,11 +219,101 @@ h6 {
   @apply text-red-900;
 }
 
-header {
-  @apply text-white;
-}
-
 hr {
   @apply border-red-900;
   @apply my-4;
+}
+
+.agent-category {
+  @apply container;
+  @apply flex;
+  @apply flex-row;
+  @apply flex-wrap;
+  @apply gap-4;
+}
+
+.agent-unselected {
+  @apply bg-slate-300;
+}
+
+.agent-selected {
+}
+
+.agents {
+  @apply container;
+  @apply flex;
+  @apply flex-row;
+  @apply gap-4;
+}
+
+.agents-select {
+}
+
+.container {
+  @apply py-8;
+}
+
+.info {
+  @apply mt-10;
+  @apply text-center;
+  @apply text-sm;
+  @apply text-gray-400;
+}
+
+.nav-link {
+  @apply hover:bg-white/25;
+  @apply leading-8;
+  @apply text-center;
+  @apply w-1/2;
+}
+
+.random-agent {
+}
+
+.weapon {
+  @apply bg-gray-900/80;
+  @apply border;
+  @apply border-gray-700;
+  @apply container;
+  @apply flex;
+  @apply flex-col;
+  @apply gap-2;
+  @apply items-center;
+  @apply p-3;
+  @apply rounded-lg;
+  @apply shadow-md;
+}
+
+.weapon-category-heading {
+  @apply row-start-1;
+  @apply text-center;
+}
+
+.weapon-image-container {
+  @apply flex;
+  @apply h-[64px];
+  @apply w-[96px];
+  @apply items-center;
+  @apply justify-center;
+}
+
+.weapon-name {
+  @apply font-bold;
+  @apply text-white;
+}
+
+.weapon-price {
+  @apply font-mono;
+  @apply text-sm;
+  @apply text-green-400;
+}
+
+.weapons {
+  @apply gap-4;
+  @apply grid;
+  @apply grid-flow-col;
+  @apply grid-cols-6;
+  @apply grid-rows-[auto_1fr_1fr_1fr_1fr_1fr];
+  @apply mt-4;
+  @apply px-4;
 }

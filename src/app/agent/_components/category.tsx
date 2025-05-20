@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import AgentIcon from "~/app/_components/agent-icon";
+import AgentIcon from "~/app/agent/_components/icon";
 
 export default function AgentCategory({
   agents,
@@ -17,7 +17,7 @@ export default function AgentCategory({
   return (
     <>
       <h2 onClick={onCategoryClick}>{category}</h2>
-      <div className="container flex flex-wrap gap-4">
+      <div className="agent-category">
         {subset.map((agent) => (
           <AgentIcon
             agent={agent}

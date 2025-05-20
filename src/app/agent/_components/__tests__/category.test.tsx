@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, expect, test } from "vitest";
-import AgentCategory from "~/app/_components/agent-category";
+import AgentCategory from "~/app/agent/_components/category";
 import { controllers, duelists, initiators, sentinels } from "~/data/agents";
 
 afterEach(() => {

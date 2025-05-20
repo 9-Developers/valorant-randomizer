@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, expect, test } from "vitest";
-import AgentIcon from "~/app/_components/agent-icon";
+import AgentIcon from "~/app/agent/_components/icon";
 
 afterEach(() => {
   cleanup();

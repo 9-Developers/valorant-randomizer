@@ -16,7 +16,7 @@ export default function AgentCategory({
 }): ReactNode {
   return (
     <>
-      <h2 onClick={onCategoryClick}>{category}</h2>
+      <h2 className="cursor-pointer" onClick={onCategoryClick}>{category}</h2>
       <div className="agent-category">
         {subset.map((agent) => (
           <AgentIcon

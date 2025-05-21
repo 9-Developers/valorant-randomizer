@@ -27,17 +27,30 @@ export default function AgentPage(): ReactNode {
   return (
     <div className="content">
       <p className="info">
-        Get a random agent from the list below. All agents are selected by
-        default. Click on a heading (Controllers, Duelists, Initiators, or
-        Sentinels) to toggle all agents in that category. Click on an individual
-        agent to toggle them.
+        Get a random agent from the list below.
+        <br />
+        All agents are selected by default. Click on a heading (Controllers,
+        Duelists, Initiators, or Sentinels) to toggle all agents in that
+        category. Click on an individual agent to toggle them.
+        <br />
+        Click on the &#34;Random Agent&#34; heading to get a new random agent.
       </p>
 
       <hr />
 
       <div className="agents">
         <div className="random-agent">
-          <h2 className="text-center">Random agent</h2>
+          <h2
+            className="cursor-pointer text-center"
+            onClick={() =>
+              setAgent(
+                agents[Math.floor(Math.random() * agents.length)] ??
+                  noAgentsSelected,
+              )
+            }
+          >
+            Random agent
+          </h2>
           <h3 className="text-center">{agent}</h3>
           <Image
             src={"/images/agents/portraits/" + agent + ".webp"}

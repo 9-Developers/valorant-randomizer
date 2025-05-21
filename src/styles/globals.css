@@ -239,9 +239,11 @@ hr {
 .agent-unselected {
   @apply bg-black/25;
   @apply dark:bg-white/25;
+  @apply cursor-pointer;
 }
 
 .agent-selected {
+  @apply cursor-pointer;
 }
 
 .agents {

@@ -1,6 +1,7 @@
 import { expect, test } from "vitest";
 import { controllers, duelists, initiators, sentinels } from "~/data/agents";
-import { getImagePath, invertSelection, toggleAgent } from "~/lib/functions";
+import type { Named } from "~/data/named";
+import { getImagePath, invertMany, invertOne } from "~/lib/functions";
 
 test("getImagePath returns correct path", () => {
   // Given
@@ -23,7 +24,7 @@ test("getImagePath returns default path", () => {
 
 test("invertSelection removes subset", () => {
   // Given
-  const agents: string[] = [
+  const agents: Named[] = [
     ...controllers,
     ...duelists,
     ...initiators,
@@ -31,33 +32,39 @@ test("invertSelection removes subset", () => {
   ];
 
   // When
-  const actual: string[] = invertSelection(controllers, agents);
+  const actual: Named[] = invertMany(controllers, agents);
 
   // Then
   expect(
-    controllers.some((agent) => actual.includes(agent)),
+    controllers.some(
+      (agent) =>
+        actual.find((element) => element.name === agent.name) !== undefined,
+    ),
     "Result should not contain any controllers",
   ).toBeFalsy();
 });
 
 test("invertSelection adds subset", () => {
   // Given
-  const agents: string[] = [...duelists, ...initiators, ...sentinels];
+  const agents: Named[] = [...duelists, ...initiators, ...sentinels];
 
   // When
-  const actual: string[] = invertSelection(controllers, agents);
+  const actual: Named[] = invertMany(controllers, agents);
 
   // Then
   expect(
-    controllers.every((agent) => actual.includes(agent)),
+    controllers.every(
+      (agent) =>
+        actual.find((element) => element.name === agent.name) !== undefined,
+    ),
     "Result should contain all controllers",
   ).toBeTruthy();
 });
 
 test("toggleAgent removes agent", () => {
   // Given
-  const agent = "Jett";
-  const agents: string[] = [
+  const agent: Named = { name: "Jett" };
+  const agents: Named[] = [
     ...controllers,
     ...duelists,
     ...initiators,
@@ -65,25 +72,31 @@ test("toggleAgent removes agent", () => {
   ];
 
   // When
-  const actual: string[] = toggleAgent(agent, agents);
+  const actual: Named[] = invertOne(agent, agents);
 
   // Then
-  expect(actual, "Result should not contain agent").not.toContain(agent);
+  expect(
+    actual.find((element) => element.name === agent.name),
+    "Result should not contain agent",
+  ).toBeFalsy();
 });
 
 test("toggleAgent adds agent", () => {
   // Given
-  const agent = "Jett";
-  const agents: string[] = [
+  const agent: Named = { name: "Jett" };
+  const agents: Named[] = [
     ...controllers,
-    ...duelists.filter((duelist) => duelist !== agent),
+    ...duelists.filter((duelist) => duelist.name !== agent.name),
     ...initiators,
     ...sentinels,
   ];
 
   // When
-  const actual: string[] = toggleAgent(agent, agents);
+  const actual: Named[] = invertOne(agent, agents);
 
   // Then
-  expect(actual, "Result should contain agent").toContain(agent);
+  expect(
+    actual.find((element) => element.name === agent.name),
+    "Result should contain agent",
+  ).toBeTruthy();
 });

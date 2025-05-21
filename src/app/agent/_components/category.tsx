@@ -1,29 +1,35 @@
 import type { ReactNode } from "react";
 import AgentIcon from "~/app/agent/_components/icon";
+import type { Named } from "~/data/named";
 
 export default function AgentCategory({
-  agents,
   category,
+  items,
   onAgentClick,
   onCategoryClick,
-  subset,
-}: {
-  agents: string[];
+  selected,
+}: Readonly<{
   category: string;
-  onAgentClick: (agent: string) => void;
+  items: Named[];
+  onAgentClick: (agent: Named) => void;
   onCategoryClick: () => void;
-  subset: string[];
-}): ReactNode {
+  selected: Named[];
+}>): ReactNode {
   return (
     <>
-      <h2 className="cursor-pointer" onClick={onCategoryClick}>{category}</h2>
+      <h2 className="clickable" onClick={onCategoryClick}>
+        {category}
+      </h2>
       <div className="agent-category">
-        {subset.map((agent) => (
+        {items.map((item) => (
           <AgentIcon
-            agent={agent}
-            key={agent}
-            isSelected={agents.includes(agent)}
-            onClick={() => onAgentClick(agent)}
+            agent={item.name}
+            key={item.name}
+            isSelected={
+              selected.find((element) => element.name === item.name) !==
+              undefined
+            }
+            onClick={() => onAgentClick(item)}
           />
         ))}
       </div>

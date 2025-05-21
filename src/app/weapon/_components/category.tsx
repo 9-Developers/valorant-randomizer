@@ -1,35 +1,39 @@
 import type { ReactNode } from "react";
+import WeaponIcon from "~/app/weapon/_components/icon";
 import { type Weapon } from "~/data/weapons";
-import Image from "next/image";
-import { getImagePath } from "~/lib/functions";
 
 export default function WeaponCategory({
   category,
-  weapons,
+  items,
+  onCategoryClick,
+  onWeaponClick,
+  selected,
 }: Readonly<{
   category: string;
-  weapons: Weapon[];
+  items: Weapon[];
+  onCategoryClick: () => void;
+  onWeaponClick: (weapon: Weapon) => void;
+  selected: Weapon[];
 }>): ReactNode {
   return (
     <>
-      <h2 className="weapon-category-heading">{category}</h2>
+      <h2
+        className="clickable weapon-category-heading"
+        onClick={onCategoryClick}
+      >
+        {category}
+      </h2>
 
-      {weapons.map((weapon) => (
-        <div key={weapon.name} className="weapon">
-          <div className="weapon-image-container">
-            <Image
-              src={getImagePath(weapon.image)}
-              alt={weapon.name}
-              style={{ objectFit: "contain" }}
-              width={96}
-              height={64}
-            />
-          </div>
-
-          <span className="weapon-name">{weapon.name}</span>
-
-          <span className="weapon-price">&#x20B9;{weapon.price}</span>
-        </div>
+      {items.map((weapon) => (
+        <WeaponIcon
+          key={weapon.name}
+          isSelected={
+            selected.find((element) => element.name === weapon.name) !==
+            undefined
+          }
+          onClick={() => onWeaponClick(weapon)}
+          weapon={weapon}
+        />
       ))}
     </>
   );

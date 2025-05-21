@@ -236,25 +236,18 @@ hr {
   @apply gap-4;
 }
 
-.agent-unselected {
-  @apply bg-black/25;
-  @apply dark:bg-white/25;
-  @apply cursor-pointer;
-}
-
-.agent-selected {
-  @apply cursor-pointer;
-}
-
 .agents {
   @apply container;
   @apply flex;
   @apply flex-row;
-  @apply gap-4;
   @apply justify-between;
 }
 
 .agents-select {
+}
+
+.clickable {
+  @apply cursor-pointer;
 }
 
 .content {
@@ -276,6 +269,14 @@ hr {
 }
 
 .random-agent {
+}
+
+.selected {
+}
+
+.unselected {
+  @apply bg-black/25;
+  @apply dark:bg-white/25;
 }
 
 .weapon {
@@ -316,7 +317,7 @@ hr {
   @apply text-green-400;
 }
 
-.weapons {
+.weapons-select {
   @apply gap-4;
   @apply grid;
   @apply grid-flow-col;
@@ -324,4 +325,11 @@ hr {
   @apply grid-rows-[auto_1fr_1fr_1fr_1fr_1fr];
   @apply mt-4;
   @apply px-4;
+}
+
+.weapons {
+  @apply container;
+  @apply flex;
+  @apply flex-row;
+  @apply justify-between;
 }

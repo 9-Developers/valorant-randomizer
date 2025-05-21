@@ -1,17 +1,24 @@
+import type { Named } from "~/data/named";
+
 /**
- * Weapon data.
+ * Icon data.
  */
-export type Weapon = {
-  /** Name. */
-  name: string;
-  /** Price. */
-  price: number;
-  /** Filename (e.g. "Vandal.webp"). */
-  image?: string;
+export type Weapon = Named &
+  Readonly<{
+    /** Price. */
+    price: number;
+    /** Filename (e.g. "Vandal.webp"). */
+    image?: string;
+  }>;
+
+export const classic: Weapon = {
+  name: "Classic",
+  price: 0,
+  image: "Classic.webp",
 };
 
 export const sidearms: Weapon[] = [
-  { name: "Classic", price: 0, image: "Classic.webp" },
+  classic,
   { name: "Shorty", price: 300, image: "Shorty.webp" },
   { name: "Frenzy", price: 450, image: "Frenzy.webp" },
   { name: "Ghost", price: 500, image: "Ghost.webp" },

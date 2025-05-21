@@ -33,11 +33,11 @@ test("renders selected agent icon", () => {
   expect(
     screen.getByLabelText(agent),
     "Agent should have background",
-  ).toHaveClass("agent-selected");
+  ).toHaveClass("selected");
   expect(
     screen.getByLabelText(agent),
     "Agent should not have background",
-  ).not.toHaveClass("agent-unselected");
+  ).not.toHaveClass("unselected");
 });
 
 test("renders unselected agent icon", () => {
@@ -67,9 +67,9 @@ test("renders unselected agent icon", () => {
   expect(
     screen.getByLabelText(agent),
     "Agent should have background",
-  ).not.toHaveClass("agent-selected");
+  ).not.toHaveClass("selected");
   expect(
     screen.getByLabelText(agent),
     "Agent should not have background",
-  ).toHaveClass("agent-unselected");
+  ).toHaveClass("unselected");
 });

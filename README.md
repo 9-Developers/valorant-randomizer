@@ -13,10 +13,13 @@ weapon, and even includes a fun drinking game!
 - [ ] Random agents page
   - [x] Agents selectors
   - [x] Get random from selected
-  - [ ] New random agent button
+  - [x] New random agent button
 - [ ] Random weapon page
-  - [ ] Weapons selectors
-  - [ ] Get random from selected
+  - [x] Weapons selectors
+  - [x] Get random from selected
+    - [ ] Fix bug where sometimes random weapon image doesn't load
+  - [ ] Add shields
+  - [ ] Get random loadout including sidearm, weapon, and shields
 - [ ] Drinking game
 - [ ] Styling 
   - [ ] Themes (dark mode/light mode)

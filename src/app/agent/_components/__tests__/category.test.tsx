@@ -2,6 +2,7 @@ import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, expect, test } from "vitest";
 import AgentCategory from "~/app/agent/_components/category";
 import { controllers, duelists, initiators, sentinels } from "~/data/agents";
+import type { Named } from "~/data/named";
 
 afterEach(() => {
   cleanup();
@@ -9,7 +10,7 @@ afterEach(() => {
 
 test("renders category", () => {
   // Given
-  const agents: string[] = [
+  const agents: Named[] = [
     ...controllers,
     ...duelists,
     ...initiators,
@@ -20,7 +21,7 @@ test("renders category", () => {
   // When
   render(
     <AgentCategory
-      agents={agents}
+      selected={agents}
       category={category}
       onAgentClick={() => {
         return;
@@ -28,7 +29,7 @@ test("renders category", () => {
       onCategoryClick={() => {
         return;
       }}
-      subset={controllers}
+      items={controllers}
     />,
   );
 
@@ -39,8 +40,8 @@ test("renders category", () => {
   ).toBeInTheDocument();
   controllers.forEach((agent) => {
     expect(
-      screen.getByLabelText(agent),
-      "Agent should be in the document",
+      screen.getByLabelText(agent.name),
+      agent.name + " should be in the document",
     ).toBeInTheDocument();
   });
 });

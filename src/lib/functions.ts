@@ -1,7 +1,21 @@
+import type { Weapon } from "~/data/weapons";
+import type { Named } from "~/data/named";
+
+/**
+ * Get the subset of weapons which are affordable with money.
+ *
+ * @param money Amount of money the user has.
+ * @param weapons List of weapons.
+ * @returnm The subset of weapons which are affordable with money.
+ */
+export function getAffordable(money: number, weapons: Weapon[]): Weapon[] {
+  return weapons.filter((weapon) => weapon.price <= money);
+}
+
 /**
  * Get the image source path for a weapon, or default to Classic.
  *
- * @param weapon Weapon to get path for.
+ * @param weapon Icon to get path for.
  * @return Image source path for a weapon.
  */
 export function getImagePath(weapon?: string): string {
@@ -11,35 +25,40 @@ export function getImagePath(weapon?: string): string {
 /**
  * Invert the selection of subset.
  *
- * If all items in the subset are contained within agents, then the subset is removed.
- * Otherwise, the missing items in the subset will be added to agents.
+ * If all items in the subset are contained within selected, then the subset is
+ * removed.
+ * Otherwise, the missing items in the subset will be added to selection.
  *
- * @param subset Subset of agents to add or remove.
- * @param agents All selected agents.
+ * @param items Items to add or remove.
+ * @param list Parent list.
  * @return New selection.
  */
-export function invertSelection(subset: string[], agents: string[]): string[] {
-  const containsAll: boolean = subset.every((agent) => agents.includes(agent));
-  const filtered: string[] = agents.filter((agent) => !subset.includes(agent));
+export function invertMany<T extends Named>(items: T[], list: T[]): T[] {
+  const containsAll: boolean = items.every(
+    (item) => list.find((element) => item.name === element.name) !== undefined,
+  );
+  const filtered: T[] = list.filter(
+    (element) => items.find((item) => element.name === item.name) === undefined,
+  );
 
   if (containsAll) {
     return filtered;
   } else {
-    return [...filtered, ...subset];
+    return [...filtered, ...items];
   }
 }
 
 /**
- * Toggle agent selection.
+ * Toggle item selection.
  *
- * If the agent is contained in agents, then remove it, otherwise add it.
+ * If the item is contained in selected, then remove it, otherwise add it.
  *
- * @param agent Agent to toggle.
- * @param agents All selected agents.
+ * @param item Item to toggle.
+ * @param list Parent list.
  * @return New selection.
  */
-export function toggleAgent(agent: string, agents: string[]): string[] {
-  return agents.includes(agent)
-    ? agents.filter((a) => a !== agent)
-    : [...agents, agent];
+export function invertOne<T extends Named>(item: T, list: T[]): T[] {
+  return list.find((element) => element.name === item.name) !== undefined
+    ? list.filter((element) => element.name !== item.name)
+    : [...list, item];
 }

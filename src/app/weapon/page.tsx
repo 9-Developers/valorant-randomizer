@@ -45,7 +45,7 @@ export default function WeaponPage(): ReactNode {
 
   return (
     <div className="content">
-      <h1>Valorant Weapons</h1>
+      <h1 className="text-center">Valorant Weapons</h1>
 
       <p className="info">
         Get a random weapon from the list below.

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import ThemeSwitcher from "./theme-switcher";
 
 export default function Header(): ReactNode {
   return (
@@ -14,9 +15,7 @@ export default function Header(): ReactNode {
         <Link className="nav-link" href="/weapon">
           Weapon
         </Link>
-        <Link className="nav-link" href="/settings">
-          Settings
-        </Link>
+        <ThemeSwitcher />
       </nav>
     </header>
   );

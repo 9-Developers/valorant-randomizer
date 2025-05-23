@@ -73,14 +73,16 @@ export default function WeaponPage(): ReactNode {
             Random weapon
           </h2>
           <h3 className="text-center">{weapon.name}</h3>
-          <Image
-            src={getImagePath(weapon.image)}
-            alt={weapon.name}
-            key={weapon.name}
-            style={{ objectFit: "contain" }}
-            height={256}
-            width={256}
-          />
+          <div className="random-weapon-container">
+            <Image
+              src={getImagePath(weapon.image)}
+              alt={weapon.name}
+              key={weapon.name}
+              style={{ objectFit: "contain" }}
+              height={256}
+              width={256}
+            />
+          </div>
         </div>
 
         <div className="money">

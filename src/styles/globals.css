@@ -310,15 +310,23 @@ hr {
 .unselected {
   @apply bg-black/25;
   @apply dark:bg-white/25;
+  @apply brightness-75;
 }
 
 /* ******************************* Agent Page ******************************* */
+
+.agent {
+  @apply p-2;
+}
 
 .agent-category {
   @apply flex;
   @apply flex-row;
   @apply flex-wrap;
-  @apply gap-4;
+}
+
+.agent-name {
+  @apply text-center;
 }
 
 .agents {
@@ -334,6 +342,14 @@ hr {
 }
 
 /* ****************************** Weapon Page ******************************* */
+
+.random-weapon-container {
+  @apply flex;
+  @apply h-[256px];
+  @apply items-center;
+  @apply justify-center;
+  @apply w-[256px];
+}
 
 .weapon {
   @apply bg-gray-900/80;
@@ -356,9 +372,9 @@ hr {
 .weapon-image-container {
   @apply flex;
   @apply h-[64px];
-  @apply w-[96px];
   @apply items-center;
   @apply justify-center;
+  @apply w-[96px];
 }
 
 .weapon-name {

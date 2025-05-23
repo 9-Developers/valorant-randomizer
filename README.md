@@ -1,6 +1,6 @@
 [![Discord Shield](https://discordapp.com/api/guilds/452233740408717313/widget.png?style=shield)](https://discord.gg/KTgshSbEUU)
 [![BSD 3-Clause License](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://opensource.org/license/bsd-3-clause)
-[![Codecov](https://img.shields.io/codecov/c/github/Ixirsii/valorant-randomizer?logo=codecov&style=flat-square)](https://codecov.io/gh/Ixirsii/valorant-randomizer)
+[![Codecov](https://img.shields.io/codecov/c/github/Ixirsii/valorant-randomizer?logo=codecov&style=flat)](https://codecov.io/gh/Ixirsii/valorant-randomizer)
 
 # Valorant randomizer
 

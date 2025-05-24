@@ -4,16 +4,16 @@ import type { Named } from "~/data/named";
 
 export default function AgentCategory({
   category,
+  isSelected,
   items,
   onAgentClick,
   onCategoryClick,
-  selected,
 }: Readonly<{
   category: string;
-  items: Named[];
+  isSelected: (weapon: Named) => boolean;
+  items: ReadonlyArray<Named>;
   onAgentClick: (agent: Named) => void;
   onCategoryClick: () => void;
-  selected: Named[];
 }>): ReactNode {
   return (
     <>
@@ -25,10 +25,7 @@ export default function AgentCategory({
           <AgentIcon
             agent={item.name}
             key={item.name}
-            isSelected={
-              selected.find((element) => element.name === item.name) !==
-              undefined
-            }
+            isSelected={isSelected(item)}
             onClick={() => onAgentClick(item)}
           />
         ))}

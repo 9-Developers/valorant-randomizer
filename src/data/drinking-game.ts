@@ -1,4 +1,4 @@
-export const rules: string[] = [
+export const rules: ReadonlyArray<string> = [
   "Drink if you get a headshot",
   "Drink if a member of your team buys a specter or bulldog",
   "Drink if an ability gets no value (missed Sova dart, wasted smoke, etc.)",

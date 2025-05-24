@@ -2,7 +2,7 @@ import type { Named } from "~/data/named";
 
 export const noAgentsSelected: Named = { name: "No Agents Selected" };
 
-export const controllers: Named[] = [
+export const controllers: ReadonlyArray<Named> = [
   { name: "Astra" },
   { name: "Brimstone" },
   { name: "Clove" },
@@ -11,7 +11,7 @@ export const controllers: Named[] = [
   { name: "Viper" },
 ];
 
-export const duelists: Named[] = [
+export const duelists: ReadonlyArray<Named> = [
   { name: "Iso" },
   { name: "Jett" },
   { name: "Neon" },
@@ -21,7 +21,7 @@ export const duelists: Named[] = [
   { name: "Yoru" },
 ];
 
-export const initiators: Named[] = [
+export const initiators: ReadonlyArray<Named> = [
   { name: "Breach" },
   { name: "Fade" },
   { name: "Gekko" },
@@ -31,11 +31,18 @@ export const initiators: Named[] = [
   { name: "Tejo" },
 ];
 
-export const sentinels: Named[] = [
+export const sentinels: ReadonlyArray<Named> = [
   { name: "Chamber" },
   { name: "Cypher" },
   { name: "Deadlock" },
   { name: "Killjoy" },
   { name: "Sage" },
   { name: "Vyse" },
+];
+
+export const agents: ReadonlyArray<Named> = [
+  ...controllers,
+  ...duelists,
+  ...initiators,
+  ...sentinels,
 ];

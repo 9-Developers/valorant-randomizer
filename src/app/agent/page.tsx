@@ -3,25 +3,14 @@
 import { type ReactNode, useEffect, useState } from "react";
 import Image from "next/image";
 import AgentCategory from "~/app/agent/_components/category";
-import {
-  controllers,
-  duelists,
-  initiators,
-  noAgentsSelected,
-  sentinels,
-} from "~/data/agents";
-import { invertMany, invertOne } from "~/lib/functions";
+import { agents, noAgentsSelected } from "~/data/agents";
+import { contains, invertMany, invertOne } from "~/lib/functions";
+import { agentCategories } from "~/data/category";
 
 export default function AgentPage(): ReactNode {
-  const [selected, setSelected] = useState([
-    ...controllers,
-    ...duelists,
-    ...initiators,
-    ...sentinels,
-  ]);
+  const [selected, setSelected] = useState(agents);
   const [agent, setAgent] = useState(noAgentsSelected);
 
-  // Dumb hack to prevent hydration errors
   useEffect(() => {
     setAgent(
       selected[Math.floor(Math.random() * selected.length)] ?? noAgentsSelected,
@@ -66,38 +55,18 @@ export default function AgentPage(): ReactNode {
         </div>
 
         <div className="agents-select">
-          <AgentCategory
-            selected={selected}
-            category="Controllers"
-            onAgentClick={(agent) => setSelected(invertOne(agent, selected))}
-            onCategoryClick={() =>
-              setSelected(invertMany(controllers, selected))
-            }
-            items={controllers}
-          />
-          <AgentCategory
-            selected={selected}
-            category="Duelists"
-            onAgentClick={(agent) => setSelected(invertOne(agent, selected))}
-            onCategoryClick={() => setSelected(invertMany(duelists, selected))}
-            items={duelists}
-          />
-          <AgentCategory
-            selected={selected}
-            category="Initiators"
-            onAgentClick={(agent) => setSelected(invertOne(agent, selected))}
-            onCategoryClick={() =>
-              setSelected(invertMany(initiators, selected))
-            }
-            items={initiators}
-          />
-          <AgentCategory
-            selected={selected}
-            category="Sentinels"
-            onAgentClick={(agent) => setSelected(invertOne(agent, selected))}
-            onCategoryClick={() => setSelected(invertMany(sentinels, selected))}
-            items={sentinels}
-          />
+          {agentCategories.map((category) => (
+            <AgentCategory
+              key={category.category}
+              category={category.category}
+              isSelected={(agent) => contains(agent, selected)}
+              items={category.items}
+              onAgentClick={(agent) => setSelected(invertOne(agent, selected))}
+              onCategoryClick={() =>
+                setSelected(invertMany(category.items, selected))
+              }
+            />
+          ))}
         </div>
       </div>
     </div>

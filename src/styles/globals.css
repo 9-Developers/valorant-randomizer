@@ -354,6 +354,14 @@ hr {
 
 /* ****************************** Weapon Page ******************************* */
 
+.affordable {
+  @apply text-green-400;
+}
+
+.unaffordable {
+  @apply text-red-400;
+}
+
 .random-weapon-container {
   @apply flex;
   @apply h-[256px];
@@ -396,7 +404,13 @@ hr {
 .weapon-price {
   @apply font-mono;
   @apply text-sm;
-  @apply text-green-400;
+}
+
+.weapons {
+  @apply flex;
+  @apply flex-row;
+  @apply justify-between;
+  @apply px-4;
 }
 
 .weapons-select {
@@ -407,10 +421,4 @@ hr {
   @apply grid-rows-[auto_1fr_1fr_1fr_1fr_1fr];
   @apply mt-4;
   @apply px-4;
-}
-
-.weapons {
-  @apply flex;
-  @apply flex-row;
-  @apply justify-between;
 }

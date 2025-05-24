@@ -1,8 +1,7 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, expect, test } from "vitest";
 import AgentCategory from "~/app/agent/_components/category";
-import { controllers, duelists, initiators, sentinels } from "~/data/agents";
-import type { Named } from "~/data/named";
+import { controllers } from "~/data/agents";
 
 afterEach(() => {
   cleanup();
@@ -10,26 +9,20 @@ afterEach(() => {
 
 test("renders category", () => {
   // Given
-  const agents: Named[] = [
-    ...controllers,
-    ...duelists,
-    ...initiators,
-    ...sentinels,
-  ];
   const category = "Controllers";
 
   // When
   render(
     <AgentCategory
-      selected={agents}
       category={category}
+      isSelected={() => true}
+      items={controllers}
       onAgentClick={() => {
         return;
       }}
       onCategoryClick={() => {
         return;
       }}
-      items={controllers}
     />,
   );
 

@@ -2,13 +2,30 @@ import type { Weapon } from "~/data/weapons";
 import type { Named } from "~/data/named";
 
 /**
+ * Check if a list contains an item.
+ *
+ * @param item Item to check presence of.
+ * @param list List to check.
+ * @return true if item is contained in list, otherwise false.
+ */
+export function contains<T extends Named>(
+  item: T,
+  list: ReadonlyArray<T>,
+): boolean {
+  return list.find((element) => element.name === item.name) !== undefined;
+}
+
+/**
  * Get the subset of weapons which are affordable with money.
  *
  * @param money Amount of money the user has.
  * @param weapons List of weapons.
  * @returnm The subset of weapons which are affordable with money.
  */
-export function getAffordable(money: number, weapons: Weapon[]): Weapon[] {
+export function getAffordable(
+  money: number,
+  weapons: ReadonlyArray<Weapon>,
+): ReadonlyArray<Weapon> {
   return weapons.filter((weapon) => weapon.price <= money);
 }
 
@@ -33,12 +50,13 @@ export function getImagePath(weapon?: string): string {
  * @param list Parent list.
  * @return New selection.
  */
-export function invertMany<T extends Named>(items: T[], list: T[]): T[] {
-  const containsAll: boolean = items.every(
-    (item) => list.find((element) => item.name === element.name) !== undefined,
-  );
-  const filtered: T[] = list.filter(
-    (element) => items.find((item) => element.name === item.name) === undefined,
+export function invertMany<T extends Named>(
+  items: ReadonlyArray<T>,
+  list: ReadonlyArray<T>,
+): ReadonlyArray<T> {
+  const containsAll: boolean = items.every((item) => contains(item, list));
+  const filtered: ReadonlyArray<T> = list.filter(
+    (element) => !contains(element, items),
   );
 
   if (containsAll) {
@@ -57,8 +75,11 @@ export function invertMany<T extends Named>(items: T[], list: T[]): T[] {
  * @param list Parent list.
  * @return New selection.
  */
-export function invertOne<T extends Named>(item: T, list: T[]): T[] {
-  return list.find((element) => element.name === item.name) !== undefined
+export function invertOne<T extends Named>(
+  item: T,
+  list: ReadonlyArray<T>,
+): ReadonlyArray<T> {
+  return contains(item, list)
     ? list.filter((element) => element.name !== item.name)
     : [...list, item];
 }

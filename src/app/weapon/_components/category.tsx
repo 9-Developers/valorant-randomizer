@@ -4,16 +4,18 @@ import { type Weapon } from "~/data/weapons";
 
 export default function WeaponCategory({
   category,
+  isAffordable,
+  isSelected,
   items,
   onCategoryClick,
   onWeaponClick,
-  selected,
 }: Readonly<{
   category: string;
-  items: Weapon[];
+  isAffordable: (weapon: Weapon) => boolean;
+  isSelected: (weapon: Weapon) => boolean;
+  items: ReadonlyArray<Weapon>;
   onCategoryClick: () => void;
   onWeaponClick: (weapon: Weapon) => void;
-  selected: Weapon[];
 }>): ReactNode {
   return (
     <>
@@ -27,10 +29,8 @@ export default function WeaponCategory({
       {items.map((weapon) => (
         <WeaponIcon
           key={weapon.name}
-          isSelected={
-            selected.find((element) => element.name === weapon.name) !==
-            undefined
-          }
+          isAffordable={isAffordable(weapon)}
+          isSelected={isSelected(weapon)}
           onClick={() => onWeaponClick(weapon)}
           weapon={weapon}
         />

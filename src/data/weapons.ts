@@ -17,7 +17,7 @@ export const classic: Weapon = {
   image: "Classic.webp",
 };
 
-export const sidearms: Weapon[] = [
+export const sidearms: ReadonlyArray<Weapon> = [
   classic,
   { name: "Shorty", price: 300, image: "Shorty.webp" },
   { name: "Frenzy", price: 450, image: "Frenzy.webp" },
@@ -25,30 +25,39 @@ export const sidearms: Weapon[] = [
   { name: "Sheriff", price: 800, image: "Sheriff.webp" },
 ];
 
-export const smgs: Weapon[] = [
+export const smgs: ReadonlyArray<Weapon> = [
   { name: "Stinger", price: 1100, image: "Stinger.webp" },
   { name: "Spectre", price: 1600, image: "Spectre.webp" },
 ];
 
-export const rifles: Weapon[] = [
+export const rifles: ReadonlyArray<Weapon> = [
   { name: "Bulldog", price: 2050, image: "Bulldog.webp" },
   { name: "Guardian", price: 2250, image: "Guardian.webp" },
   { name: "Phantom", price: 2900, image: "Phantom.webp" },
   { name: "Vandal", price: 2900, image: "Vandal.webp" },
 ];
 
-export const shotguns: Weapon[] = [
+export const shotguns: ReadonlyArray<Weapon> = [
   { name: "Bucky", price: 850, image: "Bucky.webp" },
   { name: "Judge", price: 1850, image: "Judge.webp" },
 ];
 
-export const snipers: Weapon[] = [
+export const snipers: ReadonlyArray<Weapon> = [
   { name: "Marshal", price: 950, image: "Marshal.webp" },
   { name: "Outlaw", price: 2400, image: "Outlaw.webp" },
   { name: "Operator", price: 4700, image: "Operator.webp" },
 ];
 
-export const lmgs: Weapon[] = [
+export const lmgs: ReadonlyArray<Weapon> = [
   { name: "Ares", price: 1600, image: "Ares.webp" },
   { name: "Odin", price: 3200, image: "Odin.webp" },
+];
+
+export const weapons: ReadonlyArray<Weapon> = [
+  ...sidearms,
+  ...smgs,
+  ...rifles,
+  ...shotguns,
+  ...snipers,
+  ...lmgs,
 ];

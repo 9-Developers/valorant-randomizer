@@ -1,7 +1,55 @@
 import { expect, test } from "vitest";
 import { controllers, duelists, initiators, sentinels } from "~/data/agents";
 import type { Named } from "~/data/named";
-import { getImagePath, invertMany, invertOne } from "~/lib/functions";
+import {
+  contains,
+  getAffordable,
+  getImagePath,
+  invertMany,
+  invertOne,
+} from "~/lib/functions";
+import { snipers } from "~/data/weapons";
+
+test("contains returns true", () => {
+  // Given
+  const item: Named = { name: "Jett" };
+
+  // When
+  const actual: boolean = contains(item, duelists);
+
+  // Then
+  expect(actual).toBeTruthy();
+});
+
+test("contains returns false", () => {
+  // Given
+  const item: Named = { name: "Astra" };
+
+  // When
+  const actual: boolean = contains(item, duelists);
+
+  // Then
+  expect(actual).toBeFalsy();
+});
+
+test("getAffordable returns affordable", () => {
+  // Given
+  const money = 2000;
+
+  // When
+  const actual: ReadonlyArray<Named> = getAffordable(money, snipers);
+
+  // Then
+  expect(
+    actual.find((element) => element.name === "Marshal") !== undefined,
+  ).toBeTruthy();
+  expect(
+    actual.find((element) => element.name === "Outlaw") !== undefined,
+  ).toBeFalsy();
+  expect(
+    actual.find((element) => element.name === "Operator") !== undefined,
+  ).toBeFalsy();
+});
 
 test("getImagePath returns correct path", () => {
   // Given
@@ -24,7 +72,7 @@ test("getImagePath returns default path", () => {
 
 test("invertSelection removes subset", () => {
   // Given
-  const agents: Named[] = [
+  const agents: ReadonlyArray<Named> = [
     ...controllers,
     ...duelists,
     ...initiators,
@@ -32,7 +80,7 @@ test("invertSelection removes subset", () => {
   ];
 
   // When
-  const actual: Named[] = invertMany(controllers, agents);
+  const actual: ReadonlyArray<Named> = invertMany(controllers, agents);
 
   // Then
   expect(
@@ -46,10 +94,14 @@ test("invertSelection removes subset", () => {
 
 test("invertSelection adds subset", () => {
   // Given
-  const agents: Named[] = [...duelists, ...initiators, ...sentinels];
+  const agents: ReadonlyArray<Named> = [
+    ...duelists,
+    ...initiators,
+    ...sentinels,
+  ];
 
   // When
-  const actual: Named[] = invertMany(controllers, agents);
+  const actual: ReadonlyArray<Named> = invertMany(controllers, agents);
 
   // Then
   expect(
@@ -64,7 +116,7 @@ test("invertSelection adds subset", () => {
 test("toggleAgent removes agent", () => {
   // Given
   const agent: Named = { name: "Jett" };
-  const agents: Named[] = [
+  const agents: ReadonlyArray<Named> = [
     ...controllers,
     ...duelists,
     ...initiators,
@@ -72,7 +124,7 @@ test("toggleAgent removes agent", () => {
   ];
 
   // When
-  const actual: Named[] = invertOne(agent, agents);
+  const actual: ReadonlyArray<Named> = invertOne(agent, agents);
 
   // Then
   expect(
@@ -84,7 +136,7 @@ test("toggleAgent removes agent", () => {
 test("toggleAgent adds agent", () => {
   // Given
   const agent: Named = { name: "Jett" };
-  const agents: Named[] = [
+  const agents: ReadonlyArray<Named> = [
     ...controllers,
     ...duelists.filter((duelist) => duelist.name !== agent.name),
     ...initiators,
@@ -92,7 +144,7 @@ test("toggleAgent adds agent", () => {
   ];
 
   // When
-  const actual: Named[] = invertOne(agent, agents);
+  const actual: ReadonlyArray<Named> = invertOne(agent, agents);
 
   // Then
   expect(

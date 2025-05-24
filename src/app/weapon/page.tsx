@@ -2,49 +2,38 @@
 
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import WeaponCategory from "~/app/weapon/_components/category";
+import { classic, type Weapon, weapons } from "~/data/weapons";
 import {
-  classic,
-  lmgs,
-  rifles,
-  shotguns,
-  sidearms,
-  smgs,
-  snipers,
-  type Weapon,
-} from "~/data/weapons";
-import {
+  contains,
   getAffordable,
   getImagePath,
   invertMany,
   invertOne,
 } from "~/lib/functions";
 import Image from "next/image";
+import { weaponCategories } from "~/data/category";
 
-// TODO: Make Classic required?
 export default function WeaponPage(): ReactNode {
   const [money, setMoney] = useState(9000);
-  const [selected, setSelected] = useState([
-    ...sidearms,
-    ...smgs,
-    ...rifles,
-    ...shotguns,
-    ...snipers,
-    ...lmgs,
-  ]);
-  const affordable: Weapon[] = useMemo(
-    () => getAffordable(money, selected),
-    [money, selected],
-  );
+  const [selected, setSelected] = useState(weapons);
   const [weapon, setWeapon] = useState(classic);
+  const affordable: ReadonlyArray<Weapon> = useMemo(
+    () => getAffordable(money, weapons),
+    [money],
+  );
 
   useEffect(() => {
-    setWeapon(
-      affordable[Math.floor(Math.random() * affordable.length)] ?? classic,
+    const selectable: Weapon[] = selected.filter((weapon) =>
+      contains(weapon, affordable),
     );
-  }, [affordable]);
+
+    setWeapon(
+      selectable[Math.floor(Math.random() * selectable.length)] ?? classic,
+    );
+  }, [affordable, selected]);
 
   return (
-    <div className="content">
+    <div className="content bg-black">
       <h1 className="text-center">Valorant Weapons</h1>
 
       <p className="info">
@@ -114,48 +103,19 @@ export default function WeaponPage(): ReactNode {
       <hr />
 
       <div className="weapons-select">
-        <WeaponCategory
-          category="Sidearms"
-          items={sidearms}
-          onCategoryClick={() => setSelected(invertMany(sidearms, selected))}
-          onWeaponClick={(weapon) => setSelected(invertOne(weapon, selected))}
-          selected={selected}
-        />
-        <WeaponCategory
-          category="SMGs"
-          items={smgs}
-          onCategoryClick={() => setSelected(invertMany(smgs, selected))}
-          onWeaponClick={(weapon) => setSelected(invertOne(weapon, selected))}
-          selected={selected}
-        />
-        <WeaponCategory
-          category="Rifles"
-          items={rifles}
-          onCategoryClick={() => setSelected(invertMany(rifles, selected))}
-          onWeaponClick={(weapon) => setSelected(invertOne(weapon, selected))}
-          selected={selected}
-        />
-        <WeaponCategory
-          category="Shotguns"
-          items={shotguns}
-          onCategoryClick={() => setSelected(invertMany(shotguns, selected))}
-          onWeaponClick={(weapon) => setSelected(invertOne(weapon, selected))}
-          selected={selected}
-        />
-        <WeaponCategory
-          category="Snipers"
-          items={snipers}
-          onCategoryClick={() => setSelected(invertMany(snipers, selected))}
-          onWeaponClick={(weapon) => setSelected(invertOne(weapon, selected))}
-          selected={selected}
-        />
-        <WeaponCategory
-          category="LMGs"
-          items={lmgs}
-          onCategoryClick={() => setSelected(invertMany(lmgs, selected))}
-          onWeaponClick={(weapon) => setSelected(invertOne(weapon, selected))}
-          selected={selected}
-        />
+        {weaponCategories.map((category) => (
+          <WeaponCategory
+            key={category.category}
+            category={category.category}
+            isAffordable={(weapon) => contains(weapon, affordable)}
+            isSelected={(weapon) => contains(weapon, selected)}
+            items={category.items}
+            onCategoryClick={() =>
+              setSelected(invertMany(category.items, selected))
+            }
+            onWeaponClick={(weapon) => setSelected(invertOne(weapon, selected))}
+          />
+        ))}
       </div>
 
       <p className="info">

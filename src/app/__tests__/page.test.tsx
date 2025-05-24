@@ -11,5 +11,5 @@ test("renders home page", () => {
   render(<HomePage />);
 
   // Then
-  expect(screen.getByText("First Steps →")).toBeInTheDocument();
+  expect(screen.getByText("About")).toBeInTheDocument();
 });

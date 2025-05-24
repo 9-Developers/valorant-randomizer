@@ -1,36 +1,52 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { rules } from "~/data/drinking-game";
 
 export default function HomePage(): ReactNode {
   return (
-    <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-      <h1 className="text-5xl font-extrabold tracking-tight text-black sm:text-[5rem]">
-        Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-      </h1>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-        <Link
-          className="black flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-          href="https://create.t3.gg/en/usage/first-steps"
-          target="_blank"
-        >
-          <h3 className="text-2xl font-bold">First Steps →</h3>
-          <div className="text-lg">
-            Just the basics - Everything you need to know to set up your
-            database and authentication.
-          </div>
-        </Link>
-        <Link
-          className="black flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-          href="https://create.t3.gg/en/introduction"
-          target="_blank"
-        >
-          <h3 className="text-2xl font-bold">Documentation →</h3>
-          <div className="text-lg">
-            Learn more about Create T3 App, the libraries it uses, and how to
-            deploy it.
-          </div>
-        </Link>
-      </div>
+    <div className="content">
+      <h2>About</h2>
+
+      <p className="about">
+        Welcome to Valorant randomizer! Use the nav bar to go to either the
+        agent or weapon page, or to change the theme. The title at the top of
+        the screen will bring you back here to the home page.
+      </p>
+      <p className="about">
+        Valorant randomizer allows you to get a random agent, weapon, or entire
+        loadout. We even have a drinking game!
+      </p>
+
+      <h2>Drinking game 1</h2>
+
+      <p className="about">Remember to drink responsibly.</p>
+
+      <ul>
+        <li>Drink each round you get more than 2 kills</li>
+        <li>???</li>
+      </ul>
+
+      <h2>Drinking game 2 (per-round)</h2>
+
+      <p className="about">
+        A different rule for each round. Remember to drink responsibly.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Round</th>
+            <th>Rule</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rules.map((rule, index) => (
+            <tr key={index + 1}>
+              <td className="round">{index + 1}</td>
+              <td className="px-1">{rule}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

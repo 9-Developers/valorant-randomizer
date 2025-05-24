@@ -6,7 +6,11 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   test: {
     coverage: {
-      exclude: ["*.config.[jt]s", "**/env.js", ...coverageConfigDefaults.exclude],
+      exclude: [
+        "*.config.[jt]s",
+        "**/env.js",
+        ...coverageConfigDefaults.exclude,
+      ],
     },
     environment: "jsdom",
     setupFiles: ["setup-test.ts"],

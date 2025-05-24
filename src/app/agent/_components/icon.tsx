@@ -10,7 +10,8 @@ export default function AgentIcon({
   isSelected: boolean;
   onClick: () => void;
 }>): ReactNode {
-  const className = "clickable agent " + (isSelected ? "selected" : "unselected");
+  const className =
+    "clickable agent " + (isSelected ? "selected" : "unselected");
 
   return (
     <div className={className} aria-label={agent} onClick={onClick}>

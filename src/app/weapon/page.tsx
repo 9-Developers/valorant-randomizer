@@ -1,6 +1,12 @@
 "use client";
 
-import { type ChangeEvent, type ReactNode, useEffect, useMemo, useState } from "react";
+import {
+  type ChangeEvent,
+  type ReactNode,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import WeaponCategory from "~/app/weapon/_components/category";
 import { classic, type Weapon, weapons } from "~/data/weapons";
 import {

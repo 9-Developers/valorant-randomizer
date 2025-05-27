@@ -1,21 +1,23 @@
 "use client";
 
-import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { type ChangeEvent, type ReactNode, useEffect, useMemo, useState } from "react";
 import WeaponCategory from "~/app/weapon/_components/category";
 import { classic, type Weapon, weapons } from "~/data/weapons";
 import {
   contains,
   getAffordable,
-  getImagePath,
   invertMany,
   invertOne,
 } from "~/lib/functions";
-import Image from "next/image";
 import { weaponCategories } from "~/data/category";
+import WeaponSettings from "~/app/weapon/_components/settings";
+import { Loadout, Shields } from "~/data/loadout";
 
 export default function WeaponPage(): ReactNode {
+  const [loadout, setLoadout] = useState<Loadout>(Loadout.BOTH);
   const [money, setMoney] = useState(9000);
   const [selected, setSelected] = useState(weapons);
+  const [shields, setShields] = useState<Shields>(Shields.SHIELDS);
   const [weapon, setWeapon] = useState(classic);
   const affordable: ReadonlyArray<Weapon> = useMemo(
     () => getAffordable(money, weapons),
@@ -32,8 +34,22 @@ export default function WeaponPage(): ReactNode {
     );
   }, [affordable, selected]);
 
+  function saveLoadout(event: ChangeEvent<HTMLInputElement>) {
+    const loadout: Loadout = event.currentTarget.value as Loadout;
+
+    setLoadout(loadout);
+    localStorage.setItem("loadout", loadout);
+  }
+
+  function saveShields(event: ChangeEvent<HTMLInputElement>) {
+    const shields: Shields = event.currentTarget.value as Shields;
+
+    setShields(shields);
+    localStorage.setItem("shields", loadout);
+  }
+
   return (
-    <div className="content bg-black">
+    <div className="content">
       <h1 className="text-center">Valorant Weapons</h1>
 
       <p className="info">
@@ -48,57 +64,21 @@ export default function WeaponPage(): ReactNode {
 
       <hr />
 
-      <div className="weapons">
-        <div className="random-weapon">
-          <h2
-            className="clickable text-center"
-            onClick={() =>
-              setWeapon(
-                affordable[Math.floor(Math.random() * affordable.length)] ??
-                  classic,
-              )
-            }
-          >
-            Random weapon
-          </h2>
-          <h3 className="text-center">{weapon.name}</h3>
-          <div className="random-weapon-container">
-            <Image
-              src={getImagePath(weapon.image)}
-              alt={weapon.name}
-              key={weapon.name}
-              style={{ objectFit: "contain" }}
-              height={256}
-              width={256}
-            />
-          </div>
-        </div>
-
-        <div className="money">
-          <h2>Money</h2>
-
-          <form
-            action={(formData) =>
-              setMoney(parseInt((formData.get("money") as string) ?? "9000"))
-            }
-          >
-            <label>
-              Money: &#x20B9;
-              <input
-                autoComplete="off"
-                defaultValue={money}
-                inputMode="decimal"
-                name="money"
-                pattern="(?:0|[1-9]\d*)"
-                size={4}
-                type="text"
-              />
-            </label>
-
-            <button type="submit">Update</button>
-          </form>
-        </div>
-      </div>
+      <WeaponSettings
+        loadout={loadout}
+        money={money}
+        setLoadout={saveLoadout}
+        setMoney={setMoney}
+        setShields={saveShields}
+        setWeapon={() =>
+          setWeapon(
+            affordable[Math.floor(Math.random() * affordable.length)] ??
+              classic,
+          )
+        }
+        shields={shields}
+        weapon={weapon}
+      />
 
       <hr />
 
@@ -117,13 +97,6 @@ export default function WeaponPage(): ReactNode {
           />
         ))}
       </div>
-
-      <p className="info">
-        To add or update weapon images, place them in{" "}
-        <code>public/images/weapons/</code>.<br />
-        If an image is missing, <code>Classic.webp</code> will be used as a
-        fallback.
-      </p>
     </div>
   );
 }

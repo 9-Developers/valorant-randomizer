@@ -179,29 +179,29 @@ nav {
   @apply text-center;
 }
 
-.theme-settings {
+.settings {
   @apply flex;
   @apply flex-1;
   @apply flex-row;
 }
 
-.theme-settings i {
+.settings i {
   @apply h-[24px];
   @apply mr-2;
   @apply w-[24px];
 }
 
-.theme-settings input {
+.settings input[type="radio"] {
   clip-path: inset(50%);
   position: absolute;
 }
 
-.theme-settings input:checked + label {
+.settings input:checked + label {
   @apply bg-white;
   @apply text-black;
 }
 
-.theme-settings label {
+.settings label {
   @apply border-2;
   @apply border-solid;
   @apply border-red-900;
@@ -213,19 +213,19 @@ nav {
   @apply justify-center;
 }
 
-.theme-settings label:first-of-type {
+.settings label:first-of-type {
   @apply rounded-l-full;
 }
 
-.theme-settings label:not(:first-of-type) {
+.settings label:not(:first-of-type) {
   border-left: none;
 }
 
-.theme-settings label:last-of-type {
+.settings label:last-of-type {
   @apply rounded-r-full;
 }
 
-.theme-settings svg {
+.settings svg {
   @apply text-inherit;
 }
 
@@ -319,6 +319,20 @@ hr {
   @apply pb-4;
 }
 
+.github-icon {
+  @apply fill-[#24292f];
+  @apply dark:fill-white;
+}
+
+.links {
+  @apply pb-4;
+}
+
+.links svg {
+  @apply inline-block;
+  @apply mr-4;
+}
+
 .round {
   @apply px-1;
   @apply text-right;
@@ -360,6 +374,24 @@ hr {
 
 .unaffordable {
   @apply text-red-400;
+}
+
+.loadout-settings {
+  @apply flex-1;
+}
+
+.money {
+  @apply flex-1;
+}
+
+.money input {
+  @apply border;
+  @apply border-red-900;
+  @apply rounded-md;
+}
+
+.random-weapon {
+  @apply flex-1;
 }
 
 .random-weapon-container {
@@ -406,11 +438,9 @@ hr {
   @apply text-sm;
 }
 
-.weapons {
+.weapon-settings {
   @apply flex;
   @apply flex-row;
-  @apply justify-between;
-  @apply px-4;
 }
 
 .weapons-select {
@@ -420,5 +450,4 @@ hr {
   @apply grid-cols-6;
   @apply grid-rows-[auto_1fr_1fr_1fr_1fr_1fr];
   @apply mt-4;
-  @apply px-4;
 }

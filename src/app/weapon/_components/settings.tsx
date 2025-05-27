@@ -78,7 +78,7 @@ export default function WeaponSettings({
             type="radio"
             value={Shields.SHIELDS}
           />
-          <label htmlFor="loadout-sidearm">Buy shields</label>
+          <label htmlFor="loadout-shields">Buy shields</label>
 
           <input
             checked={shields === Shields.NAKED}

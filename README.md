@@ -7,6 +7,22 @@
 Valorant randomizer is a website that allows you to get a random agent or
 weapon, and even includes a fun drinking game!
 
+**Production site(s):**
+
+- https://limpdick.io/
+- https://aceorsip.party/
+- https://agentroulette.love/
+- https://agentroulette.gg/
+
+**Development/preview site:**
+
+- https://valorant-randomizer-sand.vercel.app/
+
+## Contributing
+
+To add or update an image, place it in the correct folder under
+`public/images/`.
+
 ## Todo
 
 - [x] Get webp images of agent icons
@@ -14,16 +30,17 @@ weapon, and even includes a fun drinking game!
   - [x] Agents selectors
   - [x] Get random from selected
   - [x] New random agent button
+  - [ ] Save selected agents to local storage
 - [ ] Random weapon page
   - [x] Weapons selectors
   - [x] Get random from selected
-    - [ ] Fix bug where sometimes random weapon image doesn't load
   - [ ] Add shields
   - [ ] Get random loadout including sidearm, weapon, and shields
+  - [ ] Save selected weapons to local storage
 - [ ] Drinking game
 - [ ] Styling 
   - [ ] Themes (dark mode/light mode)
-    - [x] Settings page/theme toggle
+    - [x] Theme switcher
   - [ ] Agent page
   - [ ] Weapon page
 - [ ] Home page (what do with this?)

@@ -29,7 +29,7 @@ export default function ThemeSwitcher(): ReactNode {
   }
 
   return (
-    <form className="theme-settings">
+    <form className="settings">
       <input
         checked={theme === "system"}
         id="theme-system"

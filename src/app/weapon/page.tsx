@@ -34,8 +34,11 @@ export default function WeaponPage(): ReactNode {
     rollRandomWeapon(affordable, selected);
   }, [affordable, selected]);
 
-  function rollRandomWeapon(affordable, selected) {
-    const selectable: Weapon[] = selected.filter((weapon) =>
+  function rollRandomWeapon(
+    affordable: ReadonlyArray<Weapon>,
+    selected: ReadonlyArray<Weapon>,
+  ): Weapon {
+    const selectable: ReadonlyArray<Weapon> = selected.filter((weapon) =>
       contains(weapon, affordable),
     );
 

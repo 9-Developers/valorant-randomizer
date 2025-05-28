@@ -1,0 +1,39 @@
+div.button {
+  @apply
+    ring-[2px]
+    p-[3px]
+    ring-white/15
+    inline-block
+  ;
+}
+
+div.button .wrap {
+  @apply
+    cursor-pointer
+    min-h-[60px]
+    min-w-[200px]
+    bg-gradient-to-b
+    from-[rgba(200,50,60,1.0)]
+    to-[rgba(254,80,95,1.0)]
+    flex
+    justify-center
+    items-center
+  ;
+}
+
+div.button button {
+  @apply
+    cursor-pointer
+    uppercase
+    font-[League_Gothic]
+    text-4xl
+  ;
+}
+
+div.button:hover .wrap {
+  @apply
+    from-white
+    to-white
+    text-black
+  ;
+}

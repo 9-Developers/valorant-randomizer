@@ -3,6 +3,8 @@
 import { type ReactNode, useEffect, useState } from "react";
 import Image from "next/image";
 import AgentCategory from "~/app/agent/_components/category";
+import MajorButton from "~/app/_components/major-button"
+import MinorButton from "~/app/_components/minor-button"
 import { agents, noAgentsSelected } from "~/data/agents";
 import { contains, invertMany, invertOne } from "~/lib/functions";
 import { agentCategories } from "~/data/category";
@@ -15,7 +17,13 @@ export default function AgentPage(): ReactNode {
     setAgent(
       selected[Math.floor(Math.random() * selected.length)] ?? noAgentsSelected,
     );
-  }, [selected]);
+  }, []);
+
+  function rollRandomAgent(
+    selected: ReadonlyArray<Agent>,
+  ): Agent {
+    return selected[Math.floor(Math.random() * selected.length)] ?? noAgentsSelected;
+  }
 
   return (
     <div className="content">
@@ -33,18 +41,11 @@ export default function AgentPage(): ReactNode {
 
       <div className="agents">
         <div className="random-agent">
-          <h2
-            className="clickable text-center"
-            onClick={() =>
-              setAgent(
-                selected[Math.floor(Math.random() * selected.length)] ??
-                  noAgentsSelected,
-              )
-            }
-          >
-            Random agent
-          </h2>
-          <h3 className="text-center">{agent.name}</h3>
+          <MajorButton
+            text="Randomize"
+            action={() => setAgent(rollRandomAgent(selected))}
+          /><br />
+
           <Image
             src={"/images/agents/portraits/" + agent.name + ".webp"}
             alt={agent.name + " portrait"}
@@ -52,6 +53,8 @@ export default function AgentPage(): ReactNode {
             height={256}
             width={256}
           />
+
+          <h3 className="text-center">{agent.name}</h3>
         </div>
 
         <div className="agents-select">

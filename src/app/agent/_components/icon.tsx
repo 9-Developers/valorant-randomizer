@@ -15,13 +15,17 @@ export default function AgentIcon({
 
   return (
     <div className={className} aria-label={agent} onClick={onClick}>
-      <Image
-        src={"/images/agents/icons/" + agent + ".webp"}
-        alt={agent + " icon"}
-        style={{ objectFit: "contain" }}
-        width={80}
-        height={80}
-      />
+      <div className="wrap-outer">
+        <div className="wrap-inner">
+          <Image
+            src={"/images/agents/icons/" + agent + ".webp"}
+            alt={agent + " icon"}
+            style={{ objectFit: "contain" }}
+            width={80}
+            height={80}
+          />
+        </div>
+      </div>
       <div className="agent-name">{agent}</div>
     </div>
   );

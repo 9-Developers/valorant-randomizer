@@ -1,0 +1,60 @@
+.agent .wrap-outer {
+  @apply ring-2
+    ring-white/25
+    p-[4px]
+    ring-offset-transparent
+  ;
+  margin-bottom:2px;
+}
+
+.agent .wrap-inner {
+  @apply
+    relative
+    overflow-hidden
+    bg-gradient-to-b
+    from-white/25
+    to-transparent
+    ring-1
+    ring-white/35
+  ;
+}
+
+.agent.selected .wrap-outer {
+  @apply ring-[rgba(43,254,218,1.0)]/50;
+}
+
+.agent.selected .wrap-inner {
+  @apply
+    from-transparent
+    to-[rgba(43,254,218,1.0)]/60
+    ring-[rgba(43,254,218,1.0)]/70
+  ;
+}
+
+.agent:hover .wrap-inner {
+  @apply
+    from-[rgba(43,254,218,1.0)]/60
+    to-[rgba(43,254,218,1.0)]/60
+    ring-[rgba(43,254,218,1.0)]/70
+  ;
+}
+
+.agent.selected:hover .wrap-outer {
+  @apply ring-[rgba(43,254,218,1.0)]/80;
+}
+
+.agent.unselected img {
+  @apply saturate-[0]
+}
+
+.agent.unselected:hover .wrap-outer {
+  @apply ring-white/45
+}
+
+.agent.unselected:hover .wrap-inner {
+  @apply
+    from-white/35
+    to-white/35
+    ring-white/45
+  ;
+}

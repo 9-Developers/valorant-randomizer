@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "./buttons.css";
+@import "./agent-icon.css";
+@import "./weapon-icon.css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
@@ -128,6 +131,11 @@
   font-style: italic;
   font-weight: 900;
   src: local("FF Mark Black Italic"), url("../fonts/FF Mark Black Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "League Gothic";
+  src: local("League Gothic"), url("../fonts/League Gothic.otf") format("opentype");
 }
 
 @theme {
@@ -308,9 +316,6 @@ hr {
 }
 
 .unselected {
-  @apply bg-black/25;
-  @apply dark:bg-white/25;
-  @apply brightness-75;
 }
 
 /* ******************************* Home Page ******************************** */

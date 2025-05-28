@@ -1,0 +1,15 @@
+name: valorant-randomizer
+
+services:
+  web:
+    image: valran:latest
+    ports:
+      - "3000:3000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app

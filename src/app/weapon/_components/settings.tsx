@@ -10,7 +10,7 @@ export default function WeaponSettings({
   setMoney,
   setLoadout,
   setShields,
-  setWeapon,
+  randomizeWeapon,
   shields,
   weapon,
 }: Readonly<{
@@ -19,14 +19,14 @@ export default function WeaponSettings({
   setMoney: (money: number) => void;
   setShields: (event: ChangeEvent<HTMLInputElement>) => void;
   setLoadout: (event: ChangeEvent<HTMLInputElement>) => void;
-  setWeapon: () => void;
+  randomizeWeapon: () => void;
   shields: Shields;
   weapon: Weapon;
 }>): ReactNode {
   return (
     <div className="weapon-settings">
       <div className="random-weapon">
-        <h2 className="clickable" onClick={setWeapon}>
+        <h2 className="clickable" onClick={randomizeWeapon}>
           Random weapon
         </h2>
         <h3 className="text-center">{weapon.name}</h3>

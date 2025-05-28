@@ -31,14 +31,16 @@ export default function WeaponPage(): ReactNode {
   );
 
   useEffect(() => {
+    rollRandomWeapon(affordable, selected);
+  }, [affordable, selected]);
+
+  function rollRandomWeapon(affordable, selected) {
     const selectable: Weapon[] = selected.filter((weapon) =>
       contains(weapon, affordable),
     );
 
-    setWeapon(
-      selectable[Math.floor(Math.random() * selectable.length)] ?? classic,
-    );
-  }, [affordable, selected]);
+    return selectable[Math.floor(Math.random() * selectable.length)] ?? classic;
+  }
 
   function saveLoadout(event: ChangeEvent<HTMLInputElement>) {
     const loadout: Loadout = event.currentTarget.value as Loadout;
@@ -76,11 +78,8 @@ export default function WeaponPage(): ReactNode {
         setLoadout={saveLoadout}
         setMoney={setMoney}
         setShields={saveShields}
-        setWeapon={() =>
-          setWeapon(
-            affordable[Math.floor(Math.random() * affordable.length)] ??
-              classic,
-          )
+        randomizeWeapon={() =>
+          setWeapon(rollRandomWeapon(affordable, selected))
         }
         shields={shields}
         weapon={weapon}

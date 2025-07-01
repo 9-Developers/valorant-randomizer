@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "check": "next lint && prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache && tsc --noEmit && vitest run --coverage",
+    "check": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run test:coverage",
     "clean": "rm -rf .next coverage",
     "dev": "next dev --turbo",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",

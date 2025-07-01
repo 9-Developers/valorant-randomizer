@@ -1,7 +1,15 @@
 name: valorant-randomizer
 
 services:
+  check:
+    build: .
+    command: pnpm run check
+
   web:
+    depends_on:
+      check:
+        condition: service_completed_successfully
+
     image: valran:latest
     ports:
       - "3000:3000"
